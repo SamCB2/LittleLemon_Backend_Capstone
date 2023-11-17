@@ -16,8 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from resturant import views
+
+
+router = routers.SimpleRouter()
+router.register(r'tables', views.BookingViuewSet)
+
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path ('admin/', admin.site.urls),
     path ('restaurant/', include('resturant.urls')),
+    path ('restaurant/booking/', include(router.urls)),
 ]
